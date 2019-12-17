@@ -1,0 +1,152 @@
+{
+  "settings": {
+    "index.number_of_shards": 1,
+    "index.number_of_replicas": 1,
+    "index.requests.cache.enable": false
+  },
+  "mappings": {
+    "_doc": {
+      "_source": {
+        "excludes": ["data"]
+      },
+      "properties": {
+        "ascent_module_ids": {
+          "type": "keyword"
+        },
+        "attachment": {
+          "properties": {
+            "author": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "content": {
+              "type": "text",
+              "store": true,
+              "term_vector": "with_positions_offsets",
+              "fielddata": true
+            },
+            "content_length": {
+              "type": "integer",
+              "store": true
+            },
+            "content_type": {
+              "type": "text",
+              "store": true,
+              "fielddata": true
+            },
+            "date": {
+              "type": "date"
+            },
+            "language": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "title": {
+              "type": "text",
+              "store": true,
+              "fielddata": true
+            }
+          }
+        },
+        "auto_approval_time": {
+          "type": "date"
+        },
+        "data": {
+          "type": "text",
+          "fielddata": true
+        },
+        "defendant": {
+          "type": "text",
+          "fielddata": true
+        },
+        "document_source_ids": {
+          "type": "integer"
+        },
+        "document_source_names": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword",
+              "normalizer": "case_insensitive_sort_normalizer"
+            }
+          },
+          "fielddata": true
+        },
+        "document_source_reg_names": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword",
+              "normalizer": "case_insensitive_sort_normalizer"
+            }
+          },
+          "fielddata": true
+        },
+        "document_type": {
+          "type": "text",
+          "fielddata": true
+        },
+        "filename": {
+          "type": "text",
+          "fielddata": true
+        },
+        "id": {
+          "type": "integer"
+        },
+        "issuing_regulator_ids": {
+          "type": "keyword"
+        },
+        "number": {
+          "type": "text",
+          "fielddata": true
+        },
+        "published_on": {
+          "type": "date"
+        },
+        "regulator_ids": {
+          "type": "keyword"
+        },
+        "rule_full_titles": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword",
+              "normalizer": "case_insensitive_sort_normalizer"
+            }
+          },
+          "fielddata": true
+        },
+        "rule_ids": {
+          "type": "keyword"
+        },
+        "subject_ids": {
+          "type": "keyword"
+        },
+        "title": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword",
+              "normalizer": "case_insensitive_sort_normalizer"
+            }
+          },
+          "fielddata": true
+        },
+        "visibility": {
+          "type": "text",
+          "fielddata": true
+        }
+      }
+    }
+  }
+}

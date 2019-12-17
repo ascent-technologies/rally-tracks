@@ -1,0 +1,35 @@
+{% import "rally.helpers" as rally with context %}
+
+{
+  "version": 2,
+  "description": "Ascent Technologies Full text benchmark with 500 regulators regulatory documents",
+  "indices": [
+    {
+      "name": "reference_documents_blitz.benchmark.ingest",
+      "body": "index.json",
+      "types": [ "_doc" ]
+    }
+  ],
+  "corpora": [
+    {
+      "name": "refdocblitz",
+      "base-url": "https://ascent-mvp-development.s3-us-west-2.amazonaws.com/APP-1389",
+      "target-type": "_doc",
+      "documents": [
+        {
+          "target-index": "reference_documents_blitz.benchmark.ingest700k",
+          "source-file": "documents700k.json.gz",
+          "document-count": 700000,
+          "compressed-bytes": 23256051757,
+          "uncompressed-bytes": 650306782
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {{ rally.collect(parts="operations/*.json") }}
+  ],
+  "challenges": [
+    {{ rally.collect(parts="challenges/*.json") }}
+  ]
+}
