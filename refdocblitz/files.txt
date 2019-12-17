@@ -1,0 +1,2 @@
+documents700k.json.gz
+documents-1k.json.bz2
